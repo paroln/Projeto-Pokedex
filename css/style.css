@@ -6,11 +6,21 @@
 body {
     background-color: red;
 }
+#tela-pokedex {
+    display: none;
+}
+
+
 .card-poke {
     position: relative;
 }
 
 #imagem-fundo {
+    width: 100%;
+    display: block;
+}
+
+#imagem-inicial {
     width: 100%;
     display: block;
 }

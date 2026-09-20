@@ -4,6 +4,21 @@ import { mostrarPoke, salvarHistorico } from "./render.js";
 const meuForm = document.getElementById('form-poke');
 meuForm.addEventListener('submit', pesquisarPoke);
 
+
+
+let telaJaTrocou = false;
+document.addEventListener('keydown', function(evento){
+    if(evento.code ==='Enter' && !telaJaTrocou){
+        const telaIncial = document.getElementById('tela-inicial');
+        const telaPokedex = document.getElementById('tela-pokedex');
+
+        telaIncial.style.display = "none";
+        telaPokedex.style.display = "block";
+        telaJaTrocou = true;    
+    }
+});
+
+
 async function pesquisarPoke(evento){
     evento.preventDefault();
     const pokemon = document.getElementById('pokemon').value.toLowerCase();
