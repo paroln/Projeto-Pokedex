@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href ="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex </title>
+</head>
+
+<body>
+        <form id="form-poke">
+            <label for="pokemon">Nome:</label>
+            <input type="text" id="pokemon" class="campo-input" maxlength="100">
+            <br><br>
+            <button type="submit">Buscar pokemon</button>
+        </form>
+
+    <div class = "card-poke">
+        <div id="tipo">Tipo : </div>
+        <div id="hp"> </div>
+        <div id="ataque">Dano de ataque base : </div>
+        <div id="velocidade">Velocidade base : </div>
+        <img id = "imagem-fundo" src ="/assets/img/pokedex-canva.jpg" />
+        <div id="historico">
+        <img id="imagem-poke" src=""  />
+            
+        <ul id="lista-historico"></ul>
+        </div>
+
+    </div>
+    <script type ="module" src="js/script.js"></script>
+
+</body>
+
+</html>

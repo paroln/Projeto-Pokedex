@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: red;
+}
+.card-poke {
+    position: relative;
+}
+
+#imagem-fundo {
+    width: 100%;
+    display: block;
+}
+
+#hp {
+    position: absolute;  
+    top: 400px;       
+    left: 810px;     
+}
+#tipo {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+#ataque {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+#velocidade {
+    position: absolute;
+    top: 100px;
+    left: 1000px;
+}
