@@ -1,5 +1,5 @@
 import { buscarPokemon, ErroAoEncontrarPoke } from "./api.js";
-import { mostrarPoke, salvarHistorico } from "./render.js";
+import { mostrarPoke,  } from "./render.js";
 
     const meuForm = document.getElementById('form-poke');
     meuForm.addEventListener('submit', pesquisarPoke);
@@ -33,7 +33,6 @@ import { mostrarPoke, salvarHistorico } from "./render.js";
         try{
             const valor = await buscarPokemon(pokemon);
             mostrarPoke(valor);
-            salvarHistorico(valor.name);
         }
 
         catch(erro){

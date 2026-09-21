@@ -9,4 +9,5 @@ export async function buscarPokemon(pokemon){
     }
     const dados = await resposta.json();
     return dados;
+    console.log(dados);
 }
