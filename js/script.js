@@ -1,5 +1,6 @@
 import { buscarPokemon, ErroAoEncontrarPoke } from "./api.js";
-import { mostrarPoke,  } from "./render.js";
+import { mostrarPoke } from "./render.js";
+import { pokemonsEstaticos } from "./dados-estaticos.js";
 
     const meuForm = document.getElementById('form-poke');
     meuForm.addEventListener('submit', pesquisarPoke);
@@ -28,6 +29,7 @@ import { mostrarPoke,  } from "./render.js";
 
     async function pesquisarPoke(evento){
         evento.preventDefault();
+
         const pokemon = document.getElementById('pokemon').value.toLowerCase();
 
         try{
