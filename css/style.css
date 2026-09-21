@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    background-color: red;
+    background-color: rgb(13, 12, 12);
 }
 #tela-pokedex {
     display: none;

@@ -10,7 +10,7 @@ import { mostrarPoke, salvarHistorico } from "./render.js";
     function iniciarPokedex(){
         const telaIncial = document.getElementById('tela-inicial');
         const telaPokedex = document.getElementById('tela-pokedex');
-        const som = new Audio('assets/sons/musica-poke.mp3');
+        const som = new Audio('/assets/sons/musica-poke.mp3');
         som.play(); 
         telaIncial.style.display = "none";
         telaPokedex.style.display = "block"
