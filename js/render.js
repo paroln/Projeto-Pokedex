@@ -14,7 +14,6 @@ export const  mostrarPoke = (dados)=>{
     imagem.src = dados.sprites.front_default;
 }
 
-
 export const salvarHistorico = (nome)=>{
     historico.push(nome);
         const lista = document.getElementById('lista-historico');

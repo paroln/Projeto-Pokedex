@@ -20,9 +20,10 @@ body {
     display: block;
 }
 
-#imagem-inicial {
-    width: 100%;
-    display: block;
+#tela-inicial video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
 }
 
 #hp {
