@@ -1,12 +1,26 @@
 import { buscarPokemon, ErroAoEncontrarPoke } from "./api.js";
 import { mostrarPoke } from "./render.js";
-import { pokemonsEstaticos } from "./dados-estaticos.js";
 
     const meuForm = document.getElementById('form-poke');
     meuForm.addEventListener('submit', pesquisarPoke);
 
 
     let telaJaTrocou = false;
+    let usuarioLog = false;
+
+    function entrarConvidado(){
+        if(usuarioLog === true) return;
+
+        const telaLogin = document.getElementById('tela-login');
+        const telaIncial = document.getElementById('tela-inicial');
+
+        telaLogin.style.display = "none";
+        telaIncial.style.display = "block";
+        usuarioLog = true;
+    }
+        const botaoConvi = document.getElementById('btn-convidado');
+        botaoConvi.addEventListener('click', entrarConvidado)
+        
 
     function iniciarPokedex(){
         const telaIncial = document.getElementById('tela-inicial');
@@ -19,8 +33,7 @@ import { pokemonsEstaticos } from "./dados-estaticos.js";
     }
 
     document.addEventListener('keydown', function(evento){
-        if(evento.code ==='Enter' && !telaJaTrocou){
-
+        if(evento.code ==='Enter' && !telaJaTrocou && usuarioLog){
             iniciarPokedex();
     
         }

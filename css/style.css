@@ -10,11 +10,23 @@ body {
     display: none;
 }
 
+#tela-login {
+    position: relative;
+}
+#imagem-login {
+    width: 100vw;         
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+}
 
 .card-poke {
     position: relative;
 }
-
+#tela-inicial {
+    width: 100%;
+    display: none;
+}
 #imagem-fundo {
     width: 100%;
     display: block;
@@ -25,7 +37,17 @@ body {
     height: 100vh;
     object-fit: cover;
 }
+#btn-convidado {
+    position: absolute;
+    top: 900px;
+    left: 1020px;
+    background: none;
+    border: none;
+    color: rgb(0, 0, 0); 
+    cursor: pointer; 
+    font-family: "Press Start 2P", system ui;
 
+}
 #hp {
     position: absolute;  
     top: 400px;       
