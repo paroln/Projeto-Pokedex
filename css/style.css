@@ -4,7 +4,13 @@
     box-sizing: border-box;
 }
 body {
-    background-color: rgb(13, 12, 12);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; 
+    background-color: #0a0dac; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
 }
 #tela-pokedex {
     display: none;
@@ -12,7 +18,18 @@ body {
 
 #tela-login {
     position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+#tela-login img{
+    width: 50%; 
+    height: auto; 
+}
+
 #imagem-login {
     width: 100vw;         
     height: 100vh;
@@ -38,15 +55,18 @@ body {
     object-fit: cover;
 }
 #btn-convidado {
-    position: absolute;
-    top: 900px;
-    left: 1020px;
+    position: relative;
+    right: 1%;
+    margin-top: 16px;
+    bottom: 30px;
     background: none;
     border: none;
     color: rgb(0, 0, 0); 
     cursor: pointer; 
     font-family: "Press Start 2P", system ui;
-
+    font-size: 11px;
+    text-decoration: underline;
+    white-space: nowrap;
 }
 #hp {
     position: absolute;  
