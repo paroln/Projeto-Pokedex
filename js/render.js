@@ -13,16 +13,3 @@ export const  mostrarPoke = (dados)=>{
     dano.textContent = dados.stats[1].base_stat;
     imagem.src = dados.sprites.front_default;
 }
-
-
-export const salvarHistorico = (nome)=>{
-    historico.push(nome);
-        const lista = document.getElementById('lista-historico');
-        lista.innerHTML = "";
-
-        historico.forEach(item =>{
-            const itemLista = document.createElement('li');
-            itemLista.textContent = item;
-            lista.appendChild(itemLista);
-        });
-}
