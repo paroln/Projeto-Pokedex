@@ -1,6 +1,7 @@
-const banco = require('better-sqlite3');
-const path = require('path');
-const caminhoDoBanco = path.join(__dirname, 'pokedex.db');
+import banco from 'better-sqlite3';
+import path from 'path';
+
+const caminhoDoBanco = path.join(import.meta.dirname, 'pokedex.db');
 const conexao = new banco(caminhoDoBanco);
 
 conexao.exec(`
@@ -13,4 +14,4 @@ conexao.exec(`
     )`
 );
 
-module.exports = conexao;
+export default conexao;

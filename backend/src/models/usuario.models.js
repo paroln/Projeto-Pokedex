@@ -1,4 +1,4 @@
-const sql = require('../db/conexao');
+import sql from '../db/conexao.js';
 
 function inserirUsuarios(nome_usuario, email, senha_hash){
     sql.prepare(`INSERT INTO usuarios (nome_usuario, email, senha_hash)
@@ -6,4 +6,4 @@ function inserirUsuarios(nome_usuario, email, senha_hash){
 ).run(nome_usuario, email, senha_hash);
 }
 
-module.exports = inserirUsuarios;
+export default inserirUsuarios;
