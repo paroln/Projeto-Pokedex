@@ -7,3 +7,8 @@ const PORTA = 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use('/api', rotasUsuarios);
+
+app.listen(PORTA, () => {
+    console.log(`Servidor rodando na porta ${PORTA}`);
+});
