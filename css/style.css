@@ -33,7 +33,21 @@ body {
     width: 50%; 
     height: auto; 
 }
-
+#tela-favoritos {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 40px;
+    flex-direction: column;
+    align-items: center;
+}
+#lista-favoritos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
 #imagem-login {
     width: 100vw;         
     height: 100vh;
