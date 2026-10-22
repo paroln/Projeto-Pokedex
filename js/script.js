@@ -1,12 +1,47 @@
 import { buscarPokemon, ErroAoEncontrarPoke } from "./api.js";
-import { mostrarPoke } from "./render.js";
+import { mostrarPoke, pokemonAtual } from "./render.js";
 
     const meuForm = document.getElementById('form-poke');
     meuForm.addEventListener('submit', pesquisarPoke);
 
+    const favoritos = [];
+
+    const btnFavoritar = document.getElementById('btn-favoritar');
+    const telaPokedex = document.getElementById('tela-pokedex');
+    const telaFavoritos = document.getElementById('tela-favoritos');
+    const btnVoltarPokedex = document.getElementById('btn-voltar-pokedex');
+    const btnAbrirFavoritos = document.getElementById('btn-abrir-favoritos');
+
+    btnAbrirFavoritos.addEventListener('click',() => {
+        telaPokedex.style.display = 'none';
+        telaFavoritos.style.display = 'block';
+    });
+
+    btnVoltarPokedex.addEventListener('click', () => {
+        telaFavoritos.style.display = 'none';
+        telaPokedex.style.display = 'block';
+    });
+
+    btnFavoritar.addEventListener('click',() =>{
+        if (!pokemonAtual) return;
+
+        const indice = favoritos.findIndex(
+            pokemon =>  pokemon.name === pokemonAtual.name
+        );
+
+        if(indice !== -1){
+            favoritos.splice(indice, 1 );
+
+        } else{
+            favoritos.push(pokemonAtual);
+        }
+        console.log(favoritos);
+        
+    })
 
     let telaJaTrocou = false;
     let usuarioLog = false;
+
 
     function entrarConvidado(){
         if(usuarioLog === true) return;
