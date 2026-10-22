@@ -1,5 +1,5 @@
 import { buscarPokemon, ErroAoEncontrarPoke } from "./api.js";
-import { mostrarPoke, pokemonAtual } from "./render.js";
+import { mostrarPoke, pokemonAtual, renderizarFavoritos } from "./render.js";
 
     const meuForm = document.getElementById('form-poke');
     meuForm.addEventListener('submit', pesquisarPoke);
@@ -35,9 +35,11 @@ import { mostrarPoke, pokemonAtual } from "./render.js";
         } else{
             favoritos.push(pokemonAtual);
         }
+        renderizarFavoritos(favoritos);
         console.log(favoritos);
         
     })
+
 
     let telaJaTrocou = false;
     let usuarioLog = false;

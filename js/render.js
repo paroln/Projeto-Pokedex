@@ -16,3 +16,23 @@ export const  mostrarPoke = (dados)=>{
     dano.textContent = dados.stats[1].base_stat;
     imagem.src = dados.sprites.front_default;
 }
+
+export const renderizarFavoritos = (favoritos) => {
+        
+    const pokeFavoritos = document.getElementById('lista-favoritos');
+    pokeFavoritos.innerHTML = "";
+
+    favoritos.forEach(pokemon => {
+        const nomeFav = document.createElement('p');
+        const imgFav = document.createElement('img');
+
+        nomeFav.textContent = pokemon.name;
+        imgFav.src = pokemon.sprites.front_default;
+
+        pokeFavoritos.appendChild(nomeFav);
+        pokeFavoritos.appendChild(imgFav);
+
+        
+    });
+
+};
