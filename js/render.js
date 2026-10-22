@@ -1,6 +1,9 @@
 const historico = [];
+export let pokemonAtual = null;
 
 export const  mostrarPoke = (dados)=>{
+    pokemonAtual = dados;
+    
     const hp = document.getElementById('hp');
     const tipo = document.getElementById('tipo');
     const dano = document.getElementById('ataque');

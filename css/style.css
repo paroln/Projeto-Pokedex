@@ -16,6 +16,10 @@ body {
     display: none;
 }
 
+#tela-favoritos {
+    display: none;
+}
+
 #tela-login {
     position: relative;
     width: fit-content;
