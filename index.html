@@ -1,69 +1,164 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href ="css/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex - Treinador Pokémon</title>
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  
+  
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div id ="tela-login">
-    <img id ="imagem-login" src = "assets/img/tela-login.gif">
-    <button id="btn-convidado">Entrar como convidado</button>
-    </div>
 
-    <div id = "tela-inicial">
-    <video src = "/assets/videos/0921(2).mp4" autoplay muted></video> 
+  
+  <section id="screen-login" class="screen active">
+    <div class="login-card">
+      
+      <img src="assets/blastoise.png" alt="Blastoise" class="login-mascot" id="login-mascot">
 
-    </div>
-    <div id = "tela-pokedex">
-        <form id="form-poke">
-            <label for="pokemon">Nome:</label>
-            <input type="text" id="pokemon" class="campo-input" maxlength="100">
-            <br><br>
-            <button type="submit">Buscar pokemon</button>
-        </form>
+      
+      <h1 class="login-title">
+        SEJA BEM VINDO,<br>
+        TREINADOR!
+      </h1>
 
-    <div class = "card-poke">
-        <div id="nome"</div>
-        <div id="tipo">Tipo : </div>
-        <div id="hp"> </div>
-        <div id="ataque">Dano de ataque base : </div>
-        <div id="velocidade">Velocidade base : </div>
-        <img id = "imagem-fundo" src ="/assets/img/pokedex-canva.jpg" />
-        <div id="historico">
-        <img id="imagem-poke" src="" />
+      
+      <form id="login-form" class="login-form">
+        <input 
+          type="text" 
+          id="login-user" 
+          class="login-input" 
+          placeholder="login" 
+          autocomplete="username"
+          required
+        >
+        <input 
+          type="password" 
+          id="login-pass" 
+          class="login-input" 
+          placeholder="senha" 
+          autocomplete="current-password"
+        >
 
-        <button id="btn-favoritar" type="button">
-            Favoritar
+        
+        <button type="submit" id="btn-login-advance" class="login-submit-btn">
+          avançar
         </button>
 
-        <ul id="lista-historico"></ul>
-        </div>
-
-            <button id="btn-abrir-favoritos">
-             Favoritos
-            </button>
-        </div>
-    </div>
-
-    <div id="tela-favoritos">
-    <h1>Meus Favoritos</h1>
-
-        <button id="btn-voltar-pokedex">
-             Voltar para Pokédex
+        <button type="button" id="btn-guest" class="link-btn guest-btn">
+          entrar como convidado
         </button>
+      </form>
 
-        <div id="lista-favoritos"></div>
+      
+      <button type="button" id="btn-create-account" class="link-btn create-account-btn">
+        criar conta
+      </button>
     </div>
+  </section>
 
-    <script type ="module" src="js/script.js"></script>
 
-</body>
+  
+  <section id="screen-create-account" class="screen">
+    <div class="create-account-card">
+      <img src="assets/blastoise.png" alt="Blastoise" class="login-mascot" id="create-account-mascot">
 
-</html>
+      <h1 class="create-account-title">
+        CRIAR CONTA<br>
+        TREINADOR
+      </h1>
+
+      <form id="create-account-form" class="create-account-form">
+        <input type="text" id="register-name" class="login-input" placeholder="nome" autocomplete="name" required>
+        <input type="text" id="register-user" class="login-input" placeholder="login" autocomplete="username" required>
+        <input type="password" id="register-pass" class="login-input" placeholder="senha" autocomplete="new-password" required>
+
+        <button type="submit" id="btn-create-user" class="login-submit-btn">
+          criar conta
+        </button>
+      </form>
+
+      <button type="button" id="btn-back-login" class="link-btn create-account-btn">
+        voltar para login
+      </button>
+    </div>
+  </section>
+
+  <section id="screen-loading" class="screen">
+    <div class="loading-container">
+      
+      <img src="assets/loading_bg.png" alt="Carregando Pokédex" class="loading-bg-img">
+
+      
+      <div class="loading-bar-wrapper">
+        <div class="loading-track">
+          <div class="loading-fill" id="loading-fill"></div>
+          <div class="loading-dot" id="loading-dot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+  <section id="screen-pokedex" class="screen">
+    <div class="pokedex-layout">
+
+      
+      <main class="pokedex-device" id="pokedex-device">
+
+        
+        <div class="device-top-accent">
+          <div class="sensor-dot"></div>
+          <div class="sensor-dot"></div>
+          <div class="sensor-dot"></div>
+        </div>
+
+        
+        <div class="panel-left">
+          
+          
+          <div class="pokemon-screen-frame">
+            <div class="pokemon-screen" id="pokemon-screen">
+              
+              
+              <span class="pokemon-id" id="pokemon-id">#001</span>
+
+              
+              <div class="screen-flower-burst">
+                <div class="burst-layer burst-1"></div>
+                <div class="burst-layer burst-2"></div>
+              </div>
+
+              
+              <img 
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" 
+                alt="Pokémon Sprite" 
+                class="pokemon-sprite" 
+                id="pokemon-sprite"
+              >
+
+              
+              <button 
+                type="button" 
+                class="btn-star-fav" 
+                id="btn-toggle-favorite" 
+                title="Favoritar Pokémon"
+                aria-label="Favoritar Pokémon"
+              >
+                ★
+              </button>
+            </div>
+          </div>
+
+          
+          <div class="pokemon-sub-section">
+            
+            <div class="abilities-header">
+              <span class="pixel-label">HABILIDADES</span>
+            </div>
