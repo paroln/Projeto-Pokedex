@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
   
   
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -91,8 +91,9 @@
 
   <section id="screen-loading" class="screen">
     <div class="loading-container">
-      
-      <img src="assets/loading_bg.png" alt="Carregando Pokédex" class="loading-bg-img">
+      <video class="loading-video" autoplay muted loop playsinline controls aria-label="Vídeo 0921">
+        <source src="assets/videos/0921(2).mp4" type="video/mp4">
+      </video>
 
       
       <div class="loading-bar-wrapper">
@@ -151,7 +152,6 @@
                 title="Favoritar Pokémon"
                 aria-label="Favoritar Pokémon"
               >
-                ★
               </button>
             </div>
           </div>
@@ -162,3 +162,237 @@
             <div class="abilities-header">
               <span class="pixel-label">HABILIDADES</span>
             </div>
+            <div class="type-and-abilities-row">
+              
+              <div class="type-badge-circle" id="type-badge-circle" title="Tipo">
+                <span class="type-icon-symbol" id="type-icon-symbol">🍃</span>
+              </div>
+
+              
+              <div class="abilities-list" id="abilities-list">
+                <span class="ability-pill">OVERGROW</span>
+                <span class="ability-pill">CHLOROPHYL</span>
+              </div>
+            </div>
+
+            
+            <div class="sub-screen-lcd" id="sub-screen-lcd">
+              <button type="button" class="btn-action-favorite" id="btn-action-favorite" title="Favoritar este Pokémon">
+                <span class="fav-action-star" id="fav-action-star">☆</span>
+                <span class="fav-action-text" id="fav-action-text">FAVORITAR</span>
+              </button>
+            </div>
+          </div>
+
+        </div> 
+
+        
+        <div class="center-hinge">
+          
+          <div class="hinge-pokeball top-hinge">
+            <div class="pokeball-top"></div>
+            <div class="pokeball-band"></div>
+            <div class="pokeball-center-btn"></div>
+            <div class="pokeball-bottom"></div>
+          </div>
+
+          
+          <div class="hinge-bar"></div>
+
+          
+          <div class="hinge-pokeball bottom-hinge">
+            <div class="pokeball-top"></div>
+            <div class="pokeball-band"></div>
+            <div class="pokeball-center-btn"></div>
+            <div class="pokeball-bottom"></div>
+          </div>
+        </div>
+
+        
+        <div class="panel-right">
+          
+          
+          <div class="search-bar-wrapper">
+            <input 
+              type="text" 
+              id="search-input" 
+              class="search-input" 
+              placeholder="BULBASSAURO" 
+              autocomplete="off"
+            >
+            <button type="button" id="search-btn" class="search-btn" title="Pesquisar">
+            </button>
+          </div>
+
+          
+          <div class="nav-arrows-row">
+            <button type="button" id="btn-prev-pokemon" class="nav-arrow-btn" title="Pokémon Anterior">
+              ◀ ANTERIOR
+            </button>
+            <button type="button" id="btn-next-pokemon" class="nav-arrow-btn" title="Próximo Pokémon">
+              PRÓXIMO ▶
+            </button>
+          </div>
+
+          
+          <div class="pokemon-stats-block">
+            <div class="stat-item">
+              <span class="stat-title">VELOCIDADE BASE</span>
+              <span class="stat-value" id="stat-speed">45</span>
+            </div>
+
+            <div class="stat-item">
+              <span class="stat-title">PONTOS DE VIDA</span>
+              <span class="stat-value" id="stat-hp">45</span>
+            </div>
+
+            <div class="stat-item">
+              <span class="stat-title">ATAQUE BASE</span>
+              <span class="stat-value" id="stat-attack">49</span>
+            </div>
+          </div>
+
+          
+          <hr class="stats-divider">
+
+          
+          <div class="pokemon-description-wrapper">
+            <p class="pokemon-description-text" id="pokemon-description">
+              BULBASAUR É UMA CRIATURA REPTILIANA QUE DE ALGUM JEITO LEMBRA UM SAPO OU UM DINOSSAURO JOVEM COM UM MANCHAS VERDE-AZULADAS ESCONDIDAS. TEM TRÊS DEDOS BRANCOS OU GARRAS CRESCENDO FORA DE SUAS QUATRO PERNAS. SEUS OLHOS SÃO DE UM VERMELHO BRILHANTE, MAS A CARACTERÍSTICA MAIS NOTÁVEL DESTE POKÉMON É O BULBO DE CEBOLA COMO SOBRE AS SUAS COSTAS. ESTE BULBO TEM UMA RELAÇÃO SIMBIÓTICA COM OS POKÉMONS.
+            </p>
+          </div>
+
+        </div> 
+
+      </main> 
+
+
+      
+      <aside class="sidebar-right">
+        
+        
+        <div class="sidebar-card history-card">
+          <div class="card-header">
+            <h2 class="card-title">HISTÓRICO</h2>
+            <div class="mini-pokeball-icon">
+              <div class="mini-pb-top"></div>
+              <div class="mini-pb-line"></div>
+              <div class="mini-pb-button"></div>
+              <div class="mini-pb-bottom"></div>
+            </div>
+          </div>
+
+          
+          <ul class="history-list" id="history-list">
+            
+            <li class="history-item" data-pokemon="ivysaur">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png" alt="ivysaur" class="history-thumb">
+              <span class="history-name">ivysaur</span>
+            </li>
+          </ul>
+
+          
+          <div class="card-cloud-deco"></div>
+        </div>
+
+        
+        <button type="button" class="sidebar-card favorites-nav-card" id="btn-open-favorites">
+          <div class="mini-pokeball-icon fav-icon">
+            <div class="mini-pb-top"></div>
+            <div class="mini-pb-line"></div>
+            <div class="mini-pb-button"></div>
+            <div class="mini-pb-bottom"></div>
+          </div>
+          <span class="fav-card-title">POKEMONS<br>FAVORITOS</span>
+        </button>
+
+        
+        <button type="button" class="sidebar-card list-nav-card" id="btn-open-list" title="Ver lista completa de Pokémons">
+          <div class="mini-pokeball-icon list-icon">
+            <div class="mini-pb-top"></div>
+            <div class="mini-pb-line"></div>
+            <div class="mini-pb-button"></div>
+            <div class="mini-pb-bottom"></div>
+          </div>
+          <span class="list-card-title">LISTA DE<br>POKÉMONS</span>
+        </button>
+
+        
+        <button type="button" class="btn-logout" id="btn-logout" title="Voltar ao início">
+            SAIR
+        </button>
+
+      </aside> 
+
+    </div> 
+  </section>
+
+
+  
+  <section id="screen-favorites" class="screen">
+    <div class="favorites-container">
+      
+      
+      <div class="favorites-header">
+        <button type="button" class="btn-back-pokedex" id="btn-back-pokedex">
+          ◀ VOLTAR PARA POKÉDEX
+        </button>
+        <h2 class="favorites-page-title">POKÉMONS FAVORITOS</h2>
+      </div>
+
+      
+      <div class="favorites-board">
+        <div class="favorites-grid" id="favorites-grid">
+          
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  
+  <section id="screen-list" class="screen">
+    <div class="pokemon-list-container">
+      
+      
+      <div class="list-header">
+        <button type="button" class="btn-back-pokedex" id="btn-back-from-list">
+          ◀ VOLTAR PARA POKÉDEX
+        </button>
+        <h2 class="list-page-title">LISTA DE POKÉMONS</h2>
+        <span class="list-badge-count" id="list-badge-count">CARREGANDO...</span>
+      </div>
+
+      
+      <div class="list-search-wrapper">
+        <input 
+          type="text" 
+          id="list-search-input" 
+          class="list-search-input" 
+          placeholder="FILTRAR POR NOME OU NÚMERO..." 
+          autocomplete="off"
+        >
+      </div>
+
+      
+      <div class="list-board">
+        <div class="pokemon-catalog-grid" id="pokemon-catalog-grid">
+          
+        </div>
+      </div>
+
+      
+      <div class="list-footer">
+        <button type="button" class="btn-load-more" id="btn-load-more">
+          CARREGAR MAIS POKÉMONS ⬇
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  
+  <script src="js/script.js"></script>
+</body>
+</html>
