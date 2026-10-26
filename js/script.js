@@ -96,7 +96,6 @@ async function translateToPortuguese(text) {
 const screens = {
   login: document.getElementById('screen-login'),
   createAccount: document.getElementById('screen-create-account'),
-  loading: document.getElementById('screen-loading'),
   pokedex: document.getElementById('screen-pokedex'),
   favorites: document.getElementById('screen-favorites'),
   list: document.getElementById('screen-list')
@@ -120,8 +119,6 @@ const elFavoritesGrid = document.getElementById('favorites-grid');
 const elBtnActionFavorite = document.getElementById('btn-action-favorite');
 const elFavActionStar = document.getElementById('fav-action-star');
 const elFavActionText = document.getElementById('fav-action-text');
-const elLoadingFill = document.getElementById('loading-fill');
-const elLoadingDot = document.getElementById('loading-dot');
 
 
 const elPokemonCatalogGrid = document.getElementById('pokemon-catalog-grid');
@@ -143,33 +140,6 @@ function showScreen(screenName) {
     window.scrollTo(0, 0);
   }
 }
-
-
-function startLoadingSequence() {
-  showScreen('loading');
-
-  let progress = 0;
-  elLoadingFill.style.width = '0%';
-  elLoadingDot.style.left = '0%';
-
-  const interval = setInterval(() => {
-    progress += 4;
-    elLoadingFill.style.width = `${progress}%`;
-    elLoadingDot.style.left = `${progress}%`;
-
-    if (progress >= 100) {
-      clearInterval(interval);
-      setTimeout(() => {
-        showScreen('pokedex');
-        
-        loadPokemon(state.currentPokemonId);
-      }, 300);
-    }
-  }, 40); 
-}
-
-
-
 
 
 async function fetchPokemonData(pokemonQuery) {
@@ -466,18 +436,21 @@ function renderHistory() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  
+  const openPokedex = () => {
+    showScreen('pokedex');
+    loadPokemon(state.currentPokemonId);
+  };
+
   document.getElementById('btn-guest').addEventListener('click', () => {
-    startLoadingSequence();
+    openPokedex();
   });
 
   
   document.getElementById('login-form').addEventListener('submit', (e) => {
     e.preventDefault();
-    startLoadingSequence();
+    openPokedex();
   });
 
-  
   document.getElementById('btn-create-account').addEventListener('click', () => {
     showScreen('createAccount');
   });
