@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+<section id="screen-login" class="screen active">
+
+    <div class="login-card">
+
+        <img
+            src="./assets/blastoise.png"
+            alt="Blastoise"
+            class="login-mascot"
+        >
+
+        <h1 class="login-title">
+            SEJA BEM VINDO,
+            <br>
+            TREINADOR!
+        </h1>
+
+        <form id="login-form" class="login-form">
+
+            <input
+                type="text"
+                id="login-user"
+                class="login-input"
+                placeholder="login"
+                autocomplete="username"
+                required
+            >
+
+            <input
+                type="password"
+                id="login-pass"
+                class="login-input"
+                placeholder="senha"
+                autocomplete="current-password"
+                required
+            >
+
+            <button
+                type="submit"
+                id="btn-login-advance"
+                class="login-submit-btn"
+            >
+                avançar
+            </button>
+
+            <button
+                type="button"
+                id="btn-guest"
+                class="link-btn guest-btn"
+            >
+                entrar como convidado
+            </button>
+
+        </form>
+
+        <button
+            type="button"
+            id="btn-create-account"
+            class="link-btn create-account-btn"
+        >
+            criar conta
+        </button>
+
+    </div>
+
+       
+</section>
+
+<script type="module" src="./scripts/main.js"></script>
+</body>
+</html>
