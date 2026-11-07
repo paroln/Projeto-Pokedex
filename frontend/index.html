@@ -1,83 +1,198 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Pokédex</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="./styles/style.css">
 </head>
+
 <body>
-<section id="screen-login" class="screen active">
 
-    <div class="login-card">
+    <section id="screen-login" class="screen active">
 
-        <img
-            src="./assets/blastoise.png"
-            alt="Blastoise"
-            class="login-mascot"
-        >
+        <div class="login-card">
 
-        <h1 class="login-title">
-            SEJA BEM VINDO,
-            <br>
-            TREINADOR!
-        </h1>
-
-        <form id="login-form" class="login-form">
-
-            <input
-                type="text"
-                id="login-user"
-                class="login-input"
-                placeholder="login"
-                autocomplete="username"
-                required
+            <img
+                src="./assets/blastoise.png"
+                alt="Blastoise"
+                class="login-mascot"
             >
 
-            <input
-                type="password"
-                id="login-pass"
-                class="login-input"
-                placeholder="senha"
-                autocomplete="current-password"
-                required
-            >
+            <h1 class="login-title">
+                SEJA BEM VINDO,
+                <br>
+                TREINADOR!
+            </h1>
 
-            <button
-                type="submit"
-                id="btn-login-advance"
-                class="login-submit-btn"
-            >
-                avançar
-            </button>
+            <form id="login-form" class="login-form">
+
+                <input
+                    type="text"
+                    id="login-user"
+                    class="login-input"
+                    placeholder="login"
+                    autocomplete="username"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="login-pass"
+                    class="login-input"
+                    placeholder="senha"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    id="btn-login-advance"
+                    class="login-submit-btn"
+                >
+                    avançar
+                </button>
+
+                <button
+                    type="button"
+                    id="btn-guest"
+                    class="link-btn guest-btn"
+                >
+                    entrar como convidado
+                </button>
+
+            </form>
 
             <button
                 type="button"
-                id="btn-guest"
-                class="link-btn guest-btn"
+                id="btn-create-account"
+                class="link-btn create-account-btn"
             >
-                entrar como convidado
+                criar conta
             </button>
 
-        </form>
+        </div>
 
-        <button
-            type="button"
-            id="btn-create-account"
-            class="link-btn create-account-btn"
-        >
-            criar conta
-        </button>
+    </section>
 
-    </div>
+    <section id="screen-pokedex" class="screen">
 
-       
-</section>
+        <header class="pokedex-header">
+            <h1>POKÉDEX</h1>
+        </header>
 
-<script type="module" src="./scripts/main.js"></script>
+        <main class="pokedex-content">
+
+            <section class="pokemon-search">
+
+                <input
+                    type="text"
+                    id="pokemon-search-input"
+                    placeholder="Nome ou número do Pokémon"
+                >
+
+                <button
+                    type="button"
+                    id="btn-search-pokemon"
+                >
+                    PESQUISAR
+                </button>
+
+            </section>
+
+            <section class="pokemon-card">
+
+                <div class="pokemon-header">
+
+                    <span id="pokemon-number">Nº 001</span>
+
+                    <h2 id="pokemon-name">BULBASAUR</h2>
+
+                </div>
+
+                <div class="pokemon-image-container">
+
+                    <img
+                        src=""
+                        alt="Imagem do Pokémon"
+                        id="pokemon-image"
+                    >
+
+                </div>
+
+                <div
+                    class="pokemon-types"
+                    id="pokemon-types"
+                >
+                </div>
+
+                <section class="pokemon-info">
+
+                    <h3>INFORMAÇÕES GERAIS</h3>
+
+                    <div class="pokemon-info-grid">
+
+                        <div class="info-item">
+                            <span>Altura</span>
+                            <strong id="pokemon-height">-</strong>
+                        </div>
+
+                        <div class="info-item">
+                            <span>Peso</span>
+                            <strong id="pokemon-weight">-</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="pokemon-abilities">
+
+                        <h4>HABILIDADES</h4>
+
+                        <ul id="pokemon-abilities">
+                        </ul>
+
+                    </div>
+
+                </section>
+
+                <section class="pokemon-stats">
+
+                    <h3>ATRIBUTOS-BASE</h3>
+
+                    <div id="pokemon-stats-list">
+                    </div>
+
+                </section>
+
+                <section class="pokemon-evolutions">
+
+                    <h3>LINHA EVOLUTIVA</h3>
+
+                    <div id="pokemon-evolution-list">
+                        </div>
+
+                </section>
+
+
+            </section>
+
+        </main>
+
+    </section>
+
+    <script type="module" src="./scripts/main.js"></script>
+
 </body>
 </html>
