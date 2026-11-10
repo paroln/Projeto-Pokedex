@@ -1,15 +1,29 @@
 const elementsPokemon = {
-    id: document.getElementById('pokemon-number'),
-    name: document.getElementById('pokemon-name'),
-    image: document.getElementById('pokemon-image'),
-    types: document.getElementById('pokemon-types'),
-    height: document.getElementById('pokemon-height'),
-    weight: document.getElementById('pokemon-weight'),
-    abilities: document.getElementById('pokemon-abilities'),
-    statsList: document.getElementById('pokemon-stats-list'),
-    evolutions: document.getElementById('pokemon-evolution-list')
+    elId: document.getElementById('pokemon-number'),
+    elName: document.getElementById('pokemon-name'),
+    elImage: document.getElementById('pokemon-image'),
+    elTypes: document.getElementById('pokemon-types'),
+    elHeight: document.getElementById('pokemon-height'),
+    elWeight: document.getElementById('pokemon-weight'),
+    elAbilities: document.getElementById('pokemon-abilities'),
+    elStatsList: document.getElementById('pokemon-stats-list'),
+    elEvolutions: document.getElementById('pokemon-evolution-list'),
+    elStatHp: document.getElementById('stat-hp'),
+    elStatAttack: document.getElementById('stat-attack'),
+    elStatDefense: document.getElementById('stat-defense'),
+    elStatSpecialAttack: document.getElementById('stat-special-attack'),
+    elStatSpecialDefense: document.getElementById('stat-special-defense'),
+    elStatSpeed: document.getElementById('stat-speed')
 };
 
+const statElements = {
+    hp: elementsPokemon.elStatHp,
+    attack: elementsPokemon.elStatAttack,
+    defense: elementsPokemon.elStatDefense,
+    'special-attack': elementsPokemon.elStatSpecialAttack,
+    'special-defense': elementsPokemon.elStatSpecialDefense,
+    speed: elementsPokemon.elStatSpeed
+};
 const typeSprites = {
     normal: 1,
     fighting: 2,
@@ -32,19 +46,19 @@ const typeSprites = {
 }
 
 export function renderPokeHeader(pokemon){
-    elementsPokemon.name.textContent = pokemon.name.toUpperCase();
-    elementsPokemon.id.textContent = `# ${String(pokemon.id).padStart(3, '0')}`;
+    elementsPokemon.elName.textContent = pokemon.name.toUpperCase();
+    elementsPokemon.elId.textContent = `# ${String(pokemon.id).padStart(3, '0')}`;
 
     const animationSprite = pokemon.sprites.versions?.['generation-v']?.['black-white']?.animated?.front_default;
     const staticSprite = pokemon.sprites.front_default;
 
-    elementsPokemon.image.src = animationSprite || staticSprite || '../assets/blastoise.png';
+    elementsPokemon.elImage.src = animationSprite || staticSprite || '../assets/blastoise.png';
 }
 
 
 export function renderPokeTypes(pokemon){
-    elementsPokemon.types.replaceChildren();
-    
+    elementsPokemon.elTypes.replaceChildren();
+
     pokemon.types.forEach((item) => {
         const typeName = item.type.name;
         const typeId = typeSprites[typeName];
@@ -53,6 +67,33 @@ export function renderPokeTypes(pokemon){
 
         typeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-v/black-white/${typeId}.png`;
 
-        elementsPokemon.types.appendChild(typeImg);
+        elementsPokemon.elTypes.appendChild(typeImg);
 });
+}
+
+export function renderPokemonDetails(pokemon){
+
+    elementsPokemon.elAbilities.replaceChildren();
+    const pokeHeight = pokemon.height / 10;
+    const pokeWeight = pokemon.weight / 10;
+
+
+    elementsPokemon.elHeight.textContent = `${pokeHeight}`;
+    elementsPokemon.elWeight.textContent = `${pokeWeight}`;
+
+    pokemon.abilities.forEach((item )=>{
+        const abilityName = item.ability.name;
+        const abilityList = document.createElement('li');
+
+        elementsPokemon.elAbilities.appendChild(abilityList);
+        abilityList.textContent = abilityName;
+
+
+    })
+    pokemon.stats.forEach((item) => {
+        const statName = item.stat.name;
+        const statValue = item.base_stat;
+
+        statElements[statName].textContent = statValue;
+    });
 }

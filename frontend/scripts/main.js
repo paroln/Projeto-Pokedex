@@ -1,6 +1,6 @@
 import { state } from './state.js';
 import { searchPokemon } from './service.pokemon.js';
-import { renderPokeHeader, renderPokeTypes} from './render.pokemon.js';
+import { renderPokeHeader, renderPokemonDetails, renderPokeTypes} from './render.pokemon.js';
 
 console.log('main.js carregado');
 const telaLogin = document.getElementById('screen-login');
@@ -29,6 +29,7 @@ async function loadPokemon(idOrName) {
 
     renderPokeHeader(pokemon);
     renderPokeTypes(pokemon);
+    renderPokemonDetails(pokemon);
 }
 
 const campoPesquisa = document.getElementById('pokemon-search-input');
