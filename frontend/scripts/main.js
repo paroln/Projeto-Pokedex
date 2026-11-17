@@ -1,8 +1,16 @@
+
 import { state } from './state.js';
-import { searchPokemon, searchPokemonSpecies } from './service.pokemon.js';
-import { renderPokeHeader, renderPokemonDetails, renderPokeTypes} from './render.pokemon.js';
+import { getPokemons, getEvolutionChain } from './service.pokemon.js';
+import {
+    renderPokeHeader,
+    renderPokemonDetails,
+    renderPokeTypes,
+    renderPokemonEvo,
+    elementsPokemon
+} from './render.pokemon.js';
 
 console.log('main.js carregado');
+
 const telaLogin = document.getElementById('screen-login');
 const telaPokedex = document.getElementById('screen-pokedex');
 const botaoConvidado = document.getElementById('btn-guest');
@@ -10,38 +18,72 @@ const botaoConvidado = document.getElementById('btn-guest');
 function openPokedex() {
     telaLogin.classList.remove('active');
     telaPokedex.classList.add('active');
-    console.log('botaocarregado carregado');
-}
 
+    loadPokemon(state.currentPokemonId);
+}
 
 botaoConvidado.addEventListener('click', openPokedex);
 
 async function loadPokemon(idOrName) {
-    const pokemon = await searchPokemon(idOrName);
+    try {
+        const pokemon = await getPokemons(idOrName);
 
-    if (!pokemon) {
-        alert('Pokémon não encontrado!');
-        return;
+        if (!pokemon) {
+            alert('Pokémon não encontrado!');
+            return;
+        }
+
+        state.currentPokemonId = pokemon.id;
+        state.currentPokemonData = pokemon;
+
+        renderPokeHeader(pokemon);
+        renderPokeTypes(pokemon);
+        renderPokemonDetails(pokemon);
+
+        const data = await getEvolutionChain(pokemon.id);
+
+        state.evolutionChain = data.evolutions;
+        state.currentEvolutionIndex = 0;
+
+        renderPokemonEvo(
+            state.evolutionChain,
+            state.currentEvolutionIndex
+        );
+
+    } catch (error) {
+        console.error('Erro ao carregar Pokémon:', error);
+        alert('Não foi possível carregar os dados do Pokémon.');
     }
-
-    state.currentPokemonId = pokemon.id;
-    state.currentPokemonData = pokemon;
-
-    renderPokeHeader(pokemon);
-    renderPokeTypes(pokemon);
-    renderPokemonDetails(pokemon);
-    const data = await searchPokemonSpecies(pokemon.id);
-
-    const evolution = data.evolutionChain.chain;
-    const cadeia = evolution.evolves_to;
-
-    percorrerEvolucoes(evolution)
 }
 
+function nextEvolution() {
+    if (state.currentEvolutionIndex < state.evolutionChain.length - 1) {
+        state.currentEvolutionIndex++;
 
-const campoPesquisa = document.getElementById('pokemon-search-input');
-const botaoPesquisa = document.getElementById('btn-search-pokemon');
+        renderPokemonEvo(
+            state.evolutionChain,
+            state.currentEvolutionIndex
+        );
+    }
+}
 
-botaoPesquisa.addEventListener('click', () => {
-    loadPokemon(campoPesquisa.value);
+function previousEvolution() {
+    if (state.currentEvolutionIndex > 0) {
+        state.currentEvolutionIndex--;
+
+        renderPokemonEvo(
+            state.evolutionChain,
+            state.currentEvolutionIndex
+        );
+    }
+}
+
+elementsPokemon.elNextEvolution.addEventListener('click', nextEvolution);
+elementsPokemon.elPreviousEvolution.addEventListener('click', previousEvolution);
+
+const searchInput = document.getElementById('pokemon-search-input');
+const searchButton = document.getElementById('btn-search-pokemon');
+
+searchButton.addEventListener('click', () => {
+    loadPokemon(searchInput.value);
 });

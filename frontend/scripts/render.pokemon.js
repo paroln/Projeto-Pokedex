@@ -1,4 +1,4 @@
-const elementsPokemon = {
+export const elementsPokemon = {
     elId: document.getElementById('pokemon-number'),
     elName: document.getElementById('pokemon-name'),
     elImage: document.getElementById('pokemon-image'),
@@ -13,7 +13,9 @@ const elementsPokemon = {
     elStatDefense: document.getElementById('stat-defense'),
     elStatSpecialAttack: document.getElementById('stat-special-attack'),
     elStatSpecialDefense: document.getElementById('stat-special-defense'),
-    elStatSpeed: document.getElementById('stat-speed')
+    elStatSpeed: document.getElementById('stat-speed'),
+    elPreviousEvolution: document.getElementById('btn-previous-evolution'),
+    elNextEvolution: document.getElementById('btn-next-evolution')
 };
 
 const statElements = {
@@ -96,4 +98,27 @@ export function renderPokemonDetails(pokemon){
 
         statElements[statName].textContent = statValue;
     });
+}
+export function renderPokemonEvo(evolutions, index) {
+    const elEvolutions = elementsPokemon.elEvolutions;
+
+    elEvolutions.replaceChildren();
+    const pokemon = evolutions[index];
+
+    const animationSprite = pokemon.pokemonData.sprites.versions?.['generation-v']?.['black-white']?.animated?.front_default;
+    const staticSprite = pokemon.pokemonData.sprites.front_default;
+
+    const img = document.createElement('img');
+    const name = document.createElement('div');
+
+    name.textContent = pokemon.name;
+    img.src = animationSprite || staticSprite;
+
+
+    elEvolutions.appendChild(name);
+    elEvolutions.appendChild(img);
+
+    elementsPokemon.elPreviousEvolution.disabled = index === 0;
+
+    elementsPokemon.elNextEvolution.disabled = index === evolutions.length - 1;
 }
