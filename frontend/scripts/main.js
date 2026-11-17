@@ -1,5 +1,5 @@
 import { state } from './state.js';
-import { searchPokemon } from './service.pokemon.js';
+import { searchPokemon, searchPokemonSpecies } from './service.pokemon.js';
 import { renderPokeHeader, renderPokemonDetails, renderPokeTypes} from './render.pokemon.js';
 
 console.log('main.js carregado');
@@ -30,7 +30,14 @@ async function loadPokemon(idOrName) {
     renderPokeHeader(pokemon);
     renderPokeTypes(pokemon);
     renderPokemonDetails(pokemon);
+    const data = await searchPokemonSpecies(pokemon.id);
+
+    const evolution = data.evolutionChain.chain;
+    const cadeia = evolution.evolves_to;
+
+    percorrerEvolucoes(evolution)
 }
+
 
 const campoPesquisa = document.getElementById('pokemon-search-input');
 const botaoPesquisa = document.getElementById('btn-search-pokemon');

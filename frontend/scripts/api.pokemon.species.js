@@ -7,6 +7,18 @@
 
     const data = await response.json();
 
-    return data;
+    
+    const evolutionResponse = await fetch (data.evolution_chain.url);
+    
+    if(!evolutionResponse.ok){
+        return null;
+    }
+
+    const evolutionData = await evolutionResponse.json();
+
+    return {
+        species: data,
+        evolutionChain: evolutionData
+    }
 }
     
