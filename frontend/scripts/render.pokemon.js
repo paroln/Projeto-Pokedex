@@ -80,8 +80,8 @@ export function renderPokemonDetails(pokemon){
     const pokeWeight = pokemon.weight / 10;
 
 
-    elementsPokemon.elHeight.textContent = `${pokeHeight}`;
-    elementsPokemon.elWeight.textContent = `${pokeWeight}`;
+    elementsPokemon.elHeight.textContent = `${pokeHeight}Kg`;
+    elementsPokemon.elWeight.textContent = `${pokeWeight}M`;
 
     pokemon.abilities.forEach((item )=>{
         const abilityName = item.ability.name;

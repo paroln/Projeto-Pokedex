@@ -23,5 +23,15 @@ body {
     min-height: 100vh;
     width: 100%;
     overflow-x: hidden;
-    background-color: var(--blue-login);
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.screen.active {
+    display: flex;
 }

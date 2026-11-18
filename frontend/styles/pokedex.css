@@ -1,0 +1,365 @@
+#screen-pokedex {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+    background-color: #1a7bf1;
+    padding: 30px 20px;
+}
+
+
+
+.pokedex-header {
+    width: 100%;
+    text-align: center;
+}
+
+.pokedex-header h1 {
+    font-size: 24px;
+    color: var(--blue-login);
+}
+
+
+.pokedex-content {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+
+
+.pokemon-search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+#pokemon-search-input {
+    width: 100%;
+    max-width: 450px;
+    height: 48px;
+    padding: 0 18px;
+    border: 2px solid #c0c9d2;
+    border-radius: 12px;
+    outline: none;
+    font-family: var(--font-retro);
+    font-size: 22px;
+}
+
+#btn-search-pokemon {
+    height: 48px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--blue-login);
+    color: var(--white);
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#btn-search-pokemon:hover {
+    transform: translateY(-2px);
+}
+
+
+
+.pokemon-card {
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+
+.pokemon-header {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+#pokemon-number {
+    display: block;
+    color: #777;
+    font-family: var(--font-retro);
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+#pokemon-name {
+    color: var(--blue-login);
+    font-size: 20px;
+}
+
+
+.pokemon-image-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 190px;
+}
+
+#pokemon-image {
+    width: 190px;
+    height: 190px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.pokemon-types {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.pokemon-types img {
+    max-width: 100px;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+
+
+.pokemon-info,
+.pokemon-stats {
+    background-color: #f4f6f9;
+    border-radius: 15px;
+    padding: 22px;
+}
+
+.pokemon-info h3,
+.pokemon-stats h3,
+.pokemon-evolutions h3 {
+    text-align: center;
+    color: var(--blue-login);
+    font-size: 12px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.pokemon-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 15px 8px;
+}
+
+.info-item span {
+    font-family: var(--font-retro);
+    font-size: 20px;
+    color: #777;
+}
+
+.info-item strong {
+    font-family: var(--font-retro);
+    font-size: 25px;
+}
+
+.pokemon-abilities {
+    margin-top: 22px;
+    text-align: center;
+}
+
+.pokemon-abilities h4 {
+    font-size: 10px;
+    margin-bottom: 12px;
+}
+
+#pokemon-abilities {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+#pokemon-abilities li {
+    background-color: var(--white);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-family: var(--font-retro);
+    font-size: 19px;
+}
+
+
+.pokemon-stats table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-retro);
+    font-size: 20px;
+}
+
+.pokemon-stats th,
+.pokemon-stats td {
+    padding: 10px 6px;
+    text-align: left;
+    border-bottom: 1px solid #dce1e7;
+}
+
+.pokemon-stats th {
+    color: var(--blue-login);
+    font-family: var(--font-pixel);
+    font-size: 9px;
+}
+
+.pokemon-stats td:last-child {
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+.pokemon-evolutions {
+    grid-column: 1 / -1;
+    width: 100%;
+    background-color: #f4f6f9;
+    border-radius: 15px;
+    padding: 22px;
+}
+
+.evolution-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+#pokemon-evolution-list {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    font-family: var(--font-retro);
+    font-size: 25px;
+    text-transform: capitalize;
+}
+
+#pokemon-evolution-list img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.evolution-arrow {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--blue-login);
+    color: var(--white);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.evolution-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+
+
+@media (max-width: 650px) {
+    #screen-pokedex {
+        padding: 20px 12px;
+    }
+
+    .pokedex-header h1 {
+        font-size: 18px;
+    }
+
+    .pokemon-card {
+        grid-template-columns: 1fr;
+        padding: 18px;
+        gap: 18px;
+    }
+
+    .pokemon-info,
+    .pokemon-stats {
+        grid-column: 1;
+    }
+
+    .pokemon-search {
+        flex-direction: column;
+    }
+
+    #pokemon-search-input,
+    #btn-search-pokemon {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    #pokemon-name {
+        font-size: 15px;
+    }
+
+    .pokemon-info h3,
+    .pokemon-stats h3,
+    .pokemon-evolutions h3 {
+        font-size: 10px;
+    }
+}
+
+
+.pokedex-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.nav-btn {
+    padding: 14px 22px;
+    border: 3px solid var(--black);
+    background-color: var(--input-bg);
+    color: var(--black);
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.nav-btn.active {
+    background-color: var(--blue-login);
+    color: var(--white);
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+}
+
+.tab-view {
+    display: none;
+    width: 100%;
+}
+
+.tab-view.active {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}

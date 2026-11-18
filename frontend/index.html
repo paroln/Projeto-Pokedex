@@ -93,147 +93,204 @@
             <h1>POKÉDEX</h1>
         </header>
 
+        <nav class="pokedex-navigation">
+
+            <button
+                type="button"
+                id="btn-show-pokedex"
+                class="nav-btn active"
+            >
+                POKÉDEX
+            </button>
+
+            <button
+                type="button"
+                id="btn-show-favorites"
+                class="nav-btn"
+            >
+                FAVORITOS
+            </button>
+
+        </nav>
+
         <main class="pokedex-content">
 
-            <section class="pokemon-search">
+            <section id="pokedex-view" class="tab-view active">
 
-                <input
-                    type="text"
-                    id="pokemon-search-input"
-                    placeholder="Nome ou número do Pokémon"
-                >
+                <section class="pokemon-search">
 
-                <button
-                    type="button"
-                    id="btn-search-pokemon"
-                >
-                    PESQUISAR
-                </button>
-
-            </section>
-
-            <section class="pokemon-card">
-
-                <div class="pokemon-header">
-
-                    <span id="pokemon-number">Nº 001</span>
-
-                    <h2 id="pokemon-name">BULBASAUR</h2>
-
-                </div>
-
-                <div class="pokemon-image-container">
-
-                    <img
-                        src=""
-                        alt="Imagem do Pokémon"
-                        id="pokemon-image"
+                    <input
+                        type="text"
+                        id="pokemon-search-input"
+                        placeholder="Nome ou número do Pokémon"
                     >
 
-                </div>
-
-                <div
-                    class="pokemon-types"
-                    id="pokemon-types"
-                >
-                </div>
-
-                <section class="pokemon-info">
-
-                    <h3>INFORMAÇÕES GERAIS</h3>
-
-                    <div class="pokemon-info-grid">
-
-                        <div class="info-item">
-                            <span>Altura</span>
-                            <strong id="pokemon-height">-</strong>
-                        </div>
-
-                        <div class="info-item">
-                            <span>Peso</span>
-                            <strong id="pokemon-weight">-</strong>
-                        </div>
-
-                    </div>
-
-                    <div class="pokemon-abilities">
-
-                        <h4>HABILIDADES</h4>
-
-                        <ul id="pokemon-abilities">
-                        </ul>
-
-                    </div>
+                    <button
+                        type="button"
+                        id="btn-search-pokemon"
+                    >
+                        PESQUISAR
+                    </button>
 
                 </section>
 
-                <section class="pokemon-stats">
+                <section class="pokemon-card">
 
-                    <h3>ATRIBUTOS-BASE</h3>
+                    <div class="pokemon-header">
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Atributo</th>
-                                <th>Valor</th>
-                            </tr>
-                        </thead>
+                        <span id="pokemon-number">Nº 001</span>
 
-                        <tbody id="pokemon-stats-list">
-                            <tr>
-                                <td>Pontos de vida</td>
-                                <td id="stat-hp">-</td>
-                            </tr>
-                            <tr>
-                                <td>Ataque</td>
-                                <td id="stat-attack">-</td>
-                            </tr>
-                            <tr>
-                                <td>Defesa</td>
-                                <td id="stat-defense">-</td>
-                            </tr>
-                            <tr>
-                                <td>Ataque especial</td>
-                                <td id="stat-special-attack">-</td>
-                            </tr>
-                            <tr>
-                                <td>Defesa especial</td>
-                                <td id="stat-special-defense">-</td>
-                            </tr>
-                            <tr>
-                                <td>Velocidade</td>
-                                <td id="stat-speed">-</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <h2 id="pokemon-name">BULBASAUR</h2>
 
-  <section class="pokemon-evolutions">
+                    </div>
 
-    <h3>LINHA EVOLUTIVA</h3>
+                    <div class="pokemon-image-container">
 
-    <div class="evolution-container">
+                        <img
+                            src=""
+                            alt="Imagem do Pokémon"
+                            id="pokemon-image"
+                        >
 
-        <button
-            type="button"
-            id="btn-previous-evolution"
-            class="evolution-arrow"
-        >
-            ←
-        </button>
+                    </div>
 
-        <div id="pokemon-evolution-list"></div>
+                    <div
+                        class="pokemon-types"
+                        id="pokemon-types"
+                    >
+                    </div>
 
-        <button
-            type="button"
-            id="btn-next-evolution"
-            class="evolution-arrow"
-        >
-            →
-        </button>
+                    <section class="pokemon-info">
 
-    </div>
+                        <h3>INFORMAÇÕES GERAIS</h3>
 
-</section>
+                        <div class="pokemon-info-grid">
+
+                            <div class="info-item">
+                                <span>Altura</span>
+                                <strong id="pokemon-height">-</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <span>Peso</span>
+                                <strong id="pokemon-weight">-</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="pokemon-abilities">
+
+                            <h4>HABILIDADES</h4>
+
+                            <ul id="pokemon-abilities">
+                            </ul>
+
+                        </div>
+
+                    </section>
+
+                    <section class="pokemon-stats">
+
+                        <h3>ATRIBUTOS-BASE</h3>
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Atributo</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="pokemon-stats-list">
+
+                                <tr>
+                                    <td>Pontos de vida</td>
+                                    <td id="stat-hp">-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Ataque</td>
+                                    <td id="stat-attack">-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Defesa</td>
+                                    <td id="stat-defense">-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Ataque especial</td>
+                                    <td id="stat-special-attack">-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Defesa especial</td>
+                                    <td id="stat-special-defense">-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Velocidade</td>
+                                    <td id="stat-speed">-</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </section>
+
+                    <section class="pokemon-evolutions">
+
+                        <h3>LINHA EVOLUTIVA</h3>
+
+                        <div class="evolution-container">
+
+                            <button
+                                type="button"
+                                id="btn-previous-evolution"
+                                class="evolution-arrow"
+                            >
+                                ←
+                            </button>
+
+                            <div id="pokemon-evolution-list"></div>
+
+                            <button
+                                type="button"
+                                id="btn-next-evolution"
+                                class="evolution-arrow"
+                            >
+                                →
+                            </button>
+
+                        </div>
+
+                    </section>
+
+                </section>
+
+            </section>
+
+            <section id="favorites-view" class="tab-view">
+
+                <header class="favorites-header">
+
+                    <h2>MEUS FAVORITOS</h2>
+
+                    <span id="favorites-count">0 POKÉMON</span>
+
+                </header>
+
+                <div id="favorites-list" class="favorites-list">
+
+                    <p id="favorites-empty">
+                        VOCÊ AINDA NÃO POSSUI FAVORITOS.
+                    </p>
+
+                </div>
+
+            </section>
 
         </main>
 
@@ -242,4 +299,5 @@
     <script type="module" src="./scripts/main.js"></script>
 
 </body>
+
 </html>

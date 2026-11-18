@@ -87,3 +87,26 @@ const searchButton = document.getElementById('btn-search-pokemon');
 searchButton.addEventListener('click', () => {
     loadPokemon(searchInput.value);
 });
+
+const btnShowPokedex = document.getElementById('btn-show-pokedex');
+const btnShowFavorites = document.getElementById('btn-show-favorites');
+
+const pokedexView = document.getElementById('pokedex-view');
+const favoritesView = document.getElementById('favorites-view');
+
+function changeTab(tab) {
+    const showFavorites = tab === 'favorites';
+
+    pokedexView.classList.toggle('active', !showFavorites);
+    favoritesView.classList.toggle('active', showFavorites);
+
+    btnShowPokedex.classList.toggle('active', !showFavorites);
+    btnShowFavorites.classList.toggle('active', showFavorites);
+}
+btnShowPokedex.addEventListener('click', () => {
+    changeTab('pokedex');
+});
+
+btnShowFavorites.addEventListener('click', () => {
+    changeTab('favorites');
+});
