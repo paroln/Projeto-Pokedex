@@ -141,6 +141,10 @@
                         <span id="pokemon-number">Nº 001</span>
 
                         <h2 id="pokemon-name">BULBASAUR</h2>
+                        
+                        <button type="button" id="btn-add-favorite" class="favorite-star">
+                            ☆
+                        </button>
 
                     </div>
 
@@ -293,6 +297,69 @@
             </section>
 
         </main>
+
+    <div id="pokemon-modal" class="pokemon-modal">
+
+    <div class="pokemon-modal-content">
+
+        <button
+            type="button"
+            id="btn-close-modal"
+            class="modal-close"
+        >
+            ×
+        </button>
+
+        <header class="modal-header">
+            <span id="modal-pokemon-number"></span>
+            <h2 id="modal-pokemon-name"></h2>
+        </header>
+
+        <div class="modal-pokemon-image">
+            <img id="modal-pokemon-image" src="" alt="">
+        </div>
+
+        <div id="modal-pokemon-types" class="modal-pokemon-types"></div>
+
+        <section class="modal-biography">
+            <h3>POKÉMON INFO</h3>
+            <p id="modal-pokemon-biography"></p>
+        </section>
+
+        <section class="modal-details">
+            <h3>INFORMAÇÕES GERAIS</h3>
+
+            <div class="modal-info-grid">
+                <div>
+                    <span>ALTURA</span>
+                    <strong id="modal-pokemon-height"></strong>
+                </div>
+
+                <div>
+                    <span>PESO</span>
+                    <strong id="modal-pokemon-weight"></strong>
+                </div>
+            </div>
+
+            <h3>HABILIDADES</h3>
+            <ul id="modal-pokemon-abilities"></ul>
+        </section>
+
+        <button
+            type="button"
+            id="btn-remove-favorite"
+            class="modal-remove-favorite"
+        >
+            REMOVER DOS FAVORITOS
+        </button>
+
+        <button type="button" id="btn-view-in-pokedex" class="modal-view-pokedex">
+        VER NA POKÉDEX
+        </button>
+        
+    </div>
+
+</div>
 
     </section>
 

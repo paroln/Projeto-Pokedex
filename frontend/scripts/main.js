@@ -1,12 +1,15 @@
 
 import { state } from './state.js';
-import { getPokemons, getEvolutionChain } from './service.pokemon.js';
+import { getPokemons, getEvolutionChain, getPokemonBiography } from './service.pokemon.js';
 import {
     renderPokeHeader,
     renderPokemonDetails,
     renderPokeTypes,
     renderPokemonEvo,
-    elementsPokemon
+    elementsPokemon,
+    elementsModal,
+    renderPokemonModal,
+    renderFavorites
 } from './render.pokemon.js';
 
 console.log('main.js carregado');
@@ -35,6 +38,7 @@ async function loadPokemon(idOrName) {
 
         state.currentPokemonId = pokemon.id;
         state.currentPokemonData = pokemon;
+        updateFavoriteButton();
 
         renderPokeHeader(pokemon);
         renderPokeTypes(pokemon);
@@ -105,8 +109,121 @@ function changeTab(tab) {
 }
 btnShowPokedex.addEventListener('click', () => {
     changeTab('pokedex');
+    
 });
 
 btnShowFavorites.addEventListener('click', () => {
     changeTab('favorites');
+    renderFavorites(state.favorites);
 });
+
+
+
+const btnAddFavorite = elementsPokemon.elAddFavorite
+
+
+function toggleFavorite() {
+    const pokemon = state.currentPokemonData;
+
+    if (!pokemon) return;
+
+    const favoriteIndex = state.favorites.findIndex(
+        favorite => favorite.id === pokemon.id
+    );
+
+    if (favoriteIndex === -1) {
+        state.favorites.push(pokemon);
+    } else {
+        state.favorites.splice(favoriteIndex, 1);
+    }
+
+    updateFavoriteButton();
+    renderFavorites(state.favorites);
+}
+
+
+function updateFavoriteButton() {
+    const pokemon = state.currentPokemonData;
+
+    if (!pokemon) return;
+
+    const isFavorite = state.favorites.some(
+        favorite => favorite.id === pokemon.id
+    );
+
+    btnAddFavorite.classList.toggle('active', isFavorite);
+    btnAddFavorite.textContent = isFavorite ? '★' : '☆';
+}
+
+btnAddFavorite.addEventListener('click', toggleFavorite);
+async function openFavoriteDetails(event) {
+    const card = event.target.closest('.favorite-card');
+
+    if (!card) return;
+
+    const pokemonId = Number(card.dataset.pokemonId);
+
+    const pokemon = state.favorites.find(
+        favorite => favorite.id === pokemonId
+    );
+
+    if (!pokemon) return;
+
+    try {
+        const biography = await getPokemonBiography(pokemon.id);
+
+        renderPokemonModal(pokemon, biography);
+        state.currentModalPokemon = pokemon;
+
+    } catch (error) {
+        console.error('Erro ao carregar biografia:', error);
+        alert('Não foi possível carregar os detalhes do Pokémon.');
+    }
+}
+
+elementsPokemon.elFavoritesList.addEventListener('click', openFavoriteDetails);
+
+elementsModal.elCloseModal.addEventListener('click', () => {
+    elementsModal.elPokemonModal.classList.remove('active');
+});
+
+function removeFavoriteFromModal() {
+    const pokemon = state.currentModalPokemon;
+
+    if (!pokemon) return;
+
+    const favoriteIndex = state.favorites.findIndex(
+        favorite => favorite.id === pokemon.id
+    );
+
+    if (favoriteIndex === -1) return;
+
+    state.favorites.splice(favoriteIndex, 1);
+
+    renderFavorites(state.favorites);
+    updateFavoriteButton();
+
+    elementsModal.elPokemonModal.classList.remove('active');
+
+    state.currentModalPokemon = null;
+}
+
+function viewFavoriteInPokedex() {
+    const pokemon = state.currentModalPokemon;
+
+    if (!pokemon) return;
+
+    elementsModal.elPokemonModal.classList.remove('active');
+    state.currentModalPokemon = null;
+
+    changeTab('pokedex');
+    loadPokemon(pokemon.id);
+}
+elementsModal.elViewInPokedex.addEventListener(
+    'click',
+    viewFavoriteInPokedex
+);
+elementsModal.elRemoveFavorite.addEventListener(
+    'click',
+    removeFavoriteFromModal
+);

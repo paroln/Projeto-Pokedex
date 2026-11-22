@@ -61,3 +61,15 @@ async function getEvolutionPokemonData(pokemon){
     
     return pokemonData;
 }
+
+export async function getPokemonBiography(pokemon) {
+    const pokemonData = await fetchPokemonSpecies(pokemon);
+
+    const descriptions = pokemonData.species.flavor_text_entries;
+
+    const description = descriptions.find(
+        item => item.language.name === 'pt'
+    );
+
+    return description?.flavor_text || 'Biografia não disponível.';
+}
