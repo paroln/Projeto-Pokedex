@@ -1,3 +1,13 @@
+<<<<<<< HEAD
 node_modules
 better-sqlite3
 pokedex.db
+=======
+node_modules/
+.env
+.env.*
+*.db
+*.sqlite
+*.sqlite3
+*.log
+>>>>>>> backend-gabiru
