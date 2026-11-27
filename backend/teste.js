@@ -1,6 +1,16 @@
-import cadastrarUsuario from './src/services/usuarios.service.js';
-import cadastrarUsuario01 from './src/controllers/usuario.controllers.js'
 
-cadastrarUsuario('ash_ketchum', 'ash@pokemon.com', 'pikachu123');
-console.log('cadastrou!');
-cadastrarUsuario01('oljojoa','papa@gmail.com', 'blablablele')
+import conexao from "./src/db/conexao.js"
+
+conexao.prepare(`
+    INSERT INTO favoritos (usuario_id, pokemon_id)
+    VALUES (?, ?)
+`).run(1, 25);
+
+conexao.prepare(`
+    INSERT INTO favoritos (usuario_id, pokemon_id)
+    VALUES (?, ?)
+`).run(1, 25);
+
+console.log(
+    conexao.prepare('SELECT id, nome_usuario FROM usuarios').all()
+);

@@ -1,4 +1,4 @@
-import cadastrarUsuario from "../services/usuarios.service.js";
+import {cadastrarUsuario, autenticarUsuario} from "../services/usuarios.service.js";
 import { ErroConflito, ErroValidacao } from "../errors/lancador.erro.js";
 
 function registrar(req,res){
@@ -23,5 +23,28 @@ function registrar(req,res){
     }
 
 }
+function login(req, res){
 
-export default registrar;
+    const {email, senha} = req.body;
+    try{
+        const usuario = autenticarUsuario(email, senha);
+    
+        res.status(200).json({
+            mensagem: 'Login realizado com sucesso!',
+            usuario: usuario
+        });
+
+
+    }catch(erro){
+        if(erro instanceof ErroValidacao){
+            res.status(400).json({erro: erro.message})
+        } else {
+            console.error(erro);
+            res.status(500).json({erro: 'Erro no sistema'});
+        }
+
+    }
+
+
+}
+export {registrar, login}

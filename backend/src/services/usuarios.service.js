@@ -1,6 +1,6 @@
 import { ErroValidacao, ErroConflito } from '../errors/lancador.erro.js';
 import criptografia from 'bcryptjs';
-import inserirUsuarios from '../models/usuario.models.js';
+import { inserirUsuarios, buscarUsuarioPorEmail } from '../models/usuario.models.js';
 
 function cadastrarUsuario(nome_usuario, email, senha){
     if (!nome_usuario || !email || !senha) {
@@ -31,4 +31,26 @@ function cadastrarUsuario(nome_usuario, email, senha){
 
     }
 }
-    export default cadastrarUsuario;
+
+function autenticarUsuario(email, senha){
+    const usuario = buscarUsuarioPorEmail(email);
+
+    if (!usuario) {
+        throw new ErroValidacao('Email ou senha incorretos');
+    }
+    const senhaCorreta = criptografia.compareSync(senha, usuario.senha_hash);
+
+    if (!senhaCorreta) {
+        throw new ErroValidacao('Email ou senha incorretos');
+    }
+
+    return {
+            id: usuario.id,
+            nome_usuario: usuario.nome_usuario,
+            email: usuario.email
+        };
+
+
+
+}
+    export  {cadastrarUsuario, autenticarUsuario}
